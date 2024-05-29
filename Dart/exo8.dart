@@ -6,11 +6,11 @@ void main () {
     String scissors = 'scissors';
     String paper = 'paper';
 
-    print("Player One, it's your turn: type rock, paper, scissors");
+    print("Player One, it's your turn Shifumi: type rock, paper or scissors");
     var playerOne = stdin.readLineSync();
     if (playerOne != null) playerOne = playerOne.toLowerCase();
 
-    print("Player Two, it's your turn: type rock, paper, scissors");
+    print("Player Two, it's your turn Shifumi: type rock, paper or scissors");
     var playerTwo = stdin.readLineSync();
     if (playerTwo != null) playerTwo = playerTwo.toLowerCase();
 
