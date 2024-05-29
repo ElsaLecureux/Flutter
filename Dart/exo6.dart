@@ -5,8 +5,6 @@ bool checkIfWordPalindrome(word) {
     bool palindrome = false;
     for (var i = 0; i < wordChars.length; i++) {
        if(wordChars[i] == wordChars[wordChars.length-i-1]) {
-        print(wordChars[i]);
-        print(wordChars[wordChars.length-i-1]);
         palindrome = true;
        } else palindrome = false;
     }
