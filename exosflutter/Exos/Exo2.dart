@@ -12,13 +12,13 @@ void main () {
               width: 200,
               height: 150,
               decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 193, 250, 196),
                 border: Border.all(
                   color: Colors.black,
                   width: 1.0,
                 ),
                 borderRadius: BorderRadius.circular(10.0), // Uniform radius
               ),
-              color: const Color.fromARGB(255, 193, 250, 196),
               child: Center(
                 child: Text('Premier'),
               ),
@@ -27,13 +27,13 @@ void main () {
                width: 300,
               height: 150,
               decoration: BoxDecoration(
+                color: Color.fromARGB(255, 248, 250, 138),
                 border: Border.all(
                   color: Colors.black,
                   width: 1.0,
                 ),
                 borderRadius: BorderRadius.circular(10.0), // Uniform radius
               ),
-              color: Color.fromARGB(255, 248, 250, 138),
               child: Center(
                 child: Text('Deuxième'),
               ),
@@ -42,13 +42,13 @@ void main () {
                width: 400,
               height: 150,
               decoration: BoxDecoration(
+                color: Color.fromARGB(255, 165, 231, 243),
                 border: Border.all(
                   color: Colors.black,
                   width: 1.0,
                 ),
                 borderRadius: BorderRadius.circular(10.0), // Uniform radius
               ),
-              color: Color.fromARGB(255, 165, 231, 243),
               child: Center(
                 child: Text('Troisème'),
               ),
