@@ -78,7 +78,7 @@ void main() => runApp(MaterialApp(home: ToDoList()));
             onTap: () {
               setState(() { 
                 if(task.title.startsWith('-')) {
-                  _tasks[index] = Task(task.title,!task.description);
+                  _tasks[index] = Task(task.title.substring(1),!task.description);
                 } else {
                 _tasks[index] = Task('-' + task.title,!task.description);
                 } 
