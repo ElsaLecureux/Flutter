@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-    void _showInputDialog () {
-      print('done');
-    }
-
-
 void main() => runApp(MaterialApp(home: ToDoList()));
 
   class ToDoList extends StatefulWidget {
@@ -64,7 +59,11 @@ void main() => runApp(MaterialApp(home: ToDoList()));
         itemBuilder: (context, index) {
           final task = _tasks[index];
           return ListTile(
-            title: Text(task)
+            title: Text(task),
+            onTap: () {
+              print('test');
+              _tasks.remove(task);
+            },
           );
         }
        
