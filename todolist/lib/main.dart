@@ -14,12 +14,42 @@ void main() => runApp(MaterialApp(home: ToDoList()));
 
   class _ToDoListState extends State<ToDoList> {
 
-    List<String> _tasks = ['Courses', 'Menus de la semaine', ' Yoga', 'Minecraft'];
+    List<String> _tasks = [];
 
     void _showInputDialog () {
-      setState(() {
-        _tasks.add('test');
-      });
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          TextEditingController controller = TextEditingController();
+
+          return AlertDialog(
+            title: Text('Add a new task'),
+            content: TextField(
+              controller: controller,
+              decoration: InputDecoration(hintText: 'new task'),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                Navigator.of(context).pop();
+              },
+                child: Text(
+                  'Cancel'
+                )),
+                TextButton(
+                onPressed: () {
+                setState(() {
+                  _tasks.add(controller.text); 
+                });
+                 Navigator.of(context).pop();
+              },
+                child: Text(
+                  'Save'
+                ))
+            ],
+          );
+        }
+      );
     }
 
     @override
