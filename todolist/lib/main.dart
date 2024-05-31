@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Task {
-      final String title = "";
-      final bool description = false;
+      final String title;
+      final bool description;
 
-     task(title, description) {
-      title = this.title;
-      description= this.description;
-    }
+     Task(this.title, this.description);
   }
 
 void main() => runApp(MaterialApp(home: ToDoList()));
@@ -47,11 +44,10 @@ void main() => runApp(MaterialApp(home: ToDoList()));
                 onPressed: () {
                 setState(() {
                   if(controller.text.startsWith('-')) {
-                    Task newTask = Task.task(title: controller.text, description: true);
-                    _tasks.add(newTask);
-                  }
-                  Task newTask = task(title: controller.text, description: false);
-                  _tasks.add(newTask);
+                    _tasks.add(Task(controller.text, true));
+                  } else {
+                    _tasks.add(Task(controller.text, false));
+                  }                  
                 });
                  Navigator.of(context).pop();
               },
@@ -77,14 +73,16 @@ void main() => runApp(MaterialApp(home: ToDoList()));
           final task = _tasks[index];
           return ListTile(
             title: Text(task.title,
-            style: TextStyle(decoration: _isDone || task.description ? TextDecoration.lineThrough : null)            
+            style: TextStyle(decoration: task.description ? TextDecoration.lineThrough : null)            
             ),
             onTap: () {
-              setState(() {  
-                _isDone = !_isDone;
-                task changeTask = task(title: "-$task.title", description: true);
-                _tasks[index] = changeTask;
-                print(_isDone);
+              setState(() { 
+                if(task.title.startsWith('-')) {
+                  _tasks[index] = Task(task.title,!task.description);
+                } else {
+                _tasks[index] = Task('-' + task.title,!task.description);
+                } 
+                print(task);
               });
             },
           );
