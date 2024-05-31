@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+class Task {
+      final String title = "";
+      final bool description = false;
+
+     task(title, description) {
+      title = this.title;
+      description= this.description;
+    }
+  }
+
 void main() => runApp(MaterialApp(home: ToDoList()));
 
   class ToDoList extends StatefulWidget {
@@ -11,7 +21,7 @@ void main() => runApp(MaterialApp(home: ToDoList()));
 
     bool _isDone =  false;
 
-    List<String> _tasks = [];
+    List<Task> _tasks = [];
 
     void _showInputDialog () {
       showDialog(
@@ -36,7 +46,12 @@ void main() => runApp(MaterialApp(home: ToDoList()));
                 TextButton(
                 onPressed: () {
                 setState(() {
-                  _tasks.add(controller.text); 
+                  if(controller.text.startsWith('-')) {
+                    Task newTask = Task.task(title: controller.text, description: true);
+                    _tasks.add(newTask);
+                  }
+                  Task newTask = task(title: controller.text, description: false);
+                  _tasks.add(newTask);
                 });
                  Navigator.of(context).pop();
               },
@@ -61,12 +76,14 @@ void main() => runApp(MaterialApp(home: ToDoList()));
         itemBuilder: (context, index) {
           final task = _tasks[index];
           return ListTile(
-            title: Text(task,
-            style: TextStyle(decoration: _isDone ? TextDecoration.lineThrough : null)
+            title: Text(task.title,
+            style: TextStyle(decoration: _isDone || task.description ? TextDecoration.lineThrough : null)            
             ),
             onTap: () {
               setState(() {  
                 _isDone = !_isDone;
+                task changeTask = task(title: "-$task.title", description: true);
+                _tasks[index] = changeTask;
                 print(_isDone);
               });
             },
