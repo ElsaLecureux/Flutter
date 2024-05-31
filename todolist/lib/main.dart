@@ -9,6 +9,8 @@ void main() => runApp(MaterialApp(home: ToDoList()));
 
   class _ToDoListState extends State<ToDoList> {
 
+    bool _isDone =  false;
+
     List<String> _tasks = [];
 
     void _showInputDialog () {
@@ -39,7 +41,8 @@ void main() => runApp(MaterialApp(home: ToDoList()));
                  Navigator.of(context).pop();
               },
                 child: Text(
-                  'Save'
+                  'Save',
+                  style: TextStyle(decoration: _isDone ? TextDecoration.lineThrough : null)
                 ))
             ],
           );
@@ -61,8 +64,8 @@ void main() => runApp(MaterialApp(home: ToDoList()));
           return ListTile(
             title: Text(task),
             onTap: () {
-              setState(() {                
-              _tasks.remove(task);
+              setState(() {  
+                _isDone = !_isDone;
               });
             },
           );
