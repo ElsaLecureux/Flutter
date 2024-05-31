@@ -41,8 +41,7 @@ void main() => runApp(MaterialApp(home: ToDoList()));
                  Navigator.of(context).pop();
               },
                 child: Text(
-                  'Save',
-                  style: TextStyle(decoration: _isDone ? TextDecoration.lineThrough : null)
+                  'Save'
                 ))
             ],
           );
@@ -62,10 +61,13 @@ void main() => runApp(MaterialApp(home: ToDoList()));
         itemBuilder: (context, index) {
           final task = _tasks[index];
           return ListTile(
-            title: Text(task),
+            title: Text(task,
+            style: TextStyle(decoration: _isDone ? TextDecoration.lineThrough : null)
+            ),
             onTap: () {
               setState(() {  
                 _isDone = !_isDone;
+                print(_isDone);
               });
             },
           );
