@@ -52,7 +52,7 @@ void main() => runApp(MaterialApp(home: ToDoList()));
 
       return Scaffold(
       appBar: AppBar(
-        title: Text('Ma Liste')
+        title: Text('To do list')
       ),
       body: ListView.builder(
         itemCount: _tasks.length,
@@ -61,8 +61,9 @@ void main() => runApp(MaterialApp(home: ToDoList()));
           return ListTile(
             title: Text(task),
             onTap: () {
-              print('test');
+              setState(() {                
               _tasks.remove(task);
+              });
             },
           );
         }
