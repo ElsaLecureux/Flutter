@@ -1,41 +1,50 @@
 import 'package:flutter/material.dart';
 
-void main() {
+    void _showInputDialog () {
+      print('done');
+    }
 
-  List<String> list = ['Courses', 'Menus de la semaine', ' Yoga', 'Minecraft'];
 
-  void _showInputDialog () {
-    print('done');
+void main() => runApp(MaterialApp(home: ToDoList()));
+
+  class ToDoList extends StatefulWidget {
+    @override
+    State<ToDoList> createState() => _ToDoListState();
   }
 
-  runApp(MaterialApp(
-    home: Scaffold(
+  class _ToDoListState extends State<ToDoList> {
+
+    List<String> _tasks = ['Courses', 'Menus de la semaine', ' Yoga', 'Minecraft'];
+
+    void _showInputDialog () {
+      setState(() {
+        _tasks.add('test');
+      });
+    }
+
+    @override
+  Widget build(BuildContext context) {
+
+      return Scaffold(
       appBar: AppBar(
         title: Text('Ma Liste')
       ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text('Vaisselle'),
-          ),
-          ListTile(
-            title: Text('Musique'),
-          ),
-          ListTile(
-            title: Text('Ménage'),
-          ),
-          ListTile(
-            title: Text('Code'),
-          ),
-        ],
+      body: ListView.builder(
+        itemCount: _tasks.length,
+        itemBuilder: (context, index) {
+          final task = _tasks[index];
+          return ListTile(
+            title: Text(task)
+          );
+        }
+       
       ),
       floatingActionButton: FloatingActionButton(
-        // Add an "Edit" icon button that launches the input dialog box when pressed
       onPressed: _showInputDialog,
       child: Icon(Icons.add),
       ),
-    ),
-  ));
+    );
+  }
+  }
 
-}
-
+  
